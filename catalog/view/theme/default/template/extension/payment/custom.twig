@@ -1,0 +1,35 @@
+<form action="{{ action }}" method="post">
+  <input type="hidden" name="mid" value="{{ mid }}" />
+  <input type="hidden" name="enckey" value="{{ enckey }}" />
+  <input type="hidden" name="OrderId" value="{{ orderid }}" />
+  <input type="hidden" name="responseUrl" value="{{ callbackurl }}" />
+  <input type="hidden" name="orderdate" value="{{ orderdate }}" />
+  <input type="hidden" name="currencyName" value="{{ currency }}" />
+  <input type="hidden" name="amount" value="{{ orderamount }}00" />
+  <input type="hidden" id="billemail" name="addField1" value="{{ billemail }}" />
+  <input type="hidden" id="billphone" value="{{ billphone }}" />
+  <input type="hidden" id="billaddress" name="addField2" value="{{ billaddress }}" />
+  <input type="hidden" id="billcountry" name="addField3" value="{{ billcountry }}" />
+  <input type="hidden" id="billprovince" name="addField4" value="{{ billprovince }}" />
+  <input type="hidden" id="billcity" name="addField5" value="{{ billcity }}" />
+  <input type="hidden" id="billpost" name="addField6" value="{{ billpost }}" />
+  <input type="hidden" id="deliveryname" name="addField7" value="{{ deliveryname }}" />
+  <input type="hidden" id="deliveryaddress" name="addField8" value="{{ deliveryaddress }}" />
+  <input type="hidden" id="deliverycity" name="addField9" value="{{ deliverycity }}" />
+  <input type="hidden" id="deliverycountry" name="addField10" value="{{ deliverycountry }}" />
+  <input type="hidden" id="deliveryprovince" name="addField11" value="{{ deliveryprovince }}" />
+  <input type="hidden" id="deliveryemail" name="addField12" value="{{ deliveryemail }}" />
+  <input type="hidden" id="deliveryphone" name="addField13" value="{{ deliveryphone }}" />
+  <input type="hidden" id="deliverypost" name="addField14" value="{{ deliverypost }}" />
+  <input type="hidden" value="{{ mode }}"/>
+  <input type="hidden" value="S" id="meTransReqType" name="meTransReqType">
+  <input type="hidden" value="NA" id="recurPeriod" name="recurPeriod">
+  <input type="hidden" value="" id="recurDay" name="recurDay">
+  <input type="hidden" name="numberRecurring" id="numberRecurring" value="">
+  
+  <div class="buttons">
+    <div class="right">
+      <input type="submit" value="{{ button_confirm }}" class="button" />
+    </div>
+  </div>
+</form>

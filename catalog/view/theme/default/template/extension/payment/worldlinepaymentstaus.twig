@@ -1,0 +1,159 @@
+{{ header }}
+
+<!------ Include the above in your HEAD tag ---------->
+
+<!--Author      : @CybroMujeeb-->
+
+<div id="invoice" style="margin:100px">
+    
+    {% if attention %}
+  <div class="alert alert-info"><i class="fa fa-info-circle"></i> {{ attention }}
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+  </div>
+  {% endif %}
+  {% if success %}
+  <div class="alert alert-success alert-dismissible"><i class="fa fa-check-circle"></i> {{ success }}
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+  </div>
+  {% endif %}
+  
+    
+    <div class="invoice overflow-auto">
+        <div style="min-width: 600px" id="invoicediv">
+           
+                <div class="row">
+                    <div class="col-md-4">
+                        <a target="_blank" href="/">
+                            <img src="image/catalog/logo/FINAL LOGO-01-01.png" data-holder-rendered="true" />
+                            </a>
+                    </div>
+                    <div class="col-md-6 pull-right">
+                        <h2 class="name">
+                            MATSYAFED
+                            
+                        </h2>
+                        <div>KERALA STATE CO-OPERATIVE FEDERATION FOR FISHERIES DEVELOPMENT LTD No. F(T) 738.</div>
+                        <div>KAMALESWARAM MANACAUD P.O.</div>
+                        <div>THIRUVANANTHAPURAM-695009 </div>
+                    </div>
+
+                </div>
+                
+            <div class="container" style="margin-top:20px">
+                  <div class="row clearfix">
+                    <div class="col-md-12">
+                      <table class="table table-bordered table-hover" id="tab_logic">
+                        <thead>
+                          <tr>
+                            <th class="text-center"> {{ column_name }} </th>
+                            <th class="text-center"> {{ column_model }} </th>
+                            <th class="text-center"> {{ column_quantity }} </th>
+                            <th class="text-center"> {{ column_price }} </th>
+                            <th class="text-center"> {{ column_total }} </th>
+        
+                          </tr>
+                        </thead>
+                        <tbody>
+                        {% for product in products %}
+                          <tr id='addr0'>
+                            <td>
+                                <a href="{{ product.href }}">{{ product.name }}</a> {% for option in product.option %} <br />
+                                &nbsp;<small> - {{ option.name }}: {{ option.value }}</small> {% endfor %}
+                                {% if product.recurring %} <br />
+                                <span class="label label-info">{{ text_recurring_item }}</span> <small>{{ product.recurring }}</small> {% endif %}
+                                </td>
+                            <td><label class="form-control">{{ product.model }}</label></td>
+                            <td><label class="form-control">{{ product.quantity }}</label></td>
+                            <td><label class="form-control">{{ product.price }}</label></td>
+                            <td><label class="form-control">{{ product.total }}</label></td>
+                          </tr>
+                          {% endfor %}
+                          {% for voucher in vouchers %}
+                                <tr>
+                                  <td><label class="form-control">{{ voucher.description }}</label></td>
+                                  <td><label class="form-control"></label></td>
+                                  <td><label class="form-control">1</label></td>
+                                  <td><label class="form-control">{{ voucher.amount }}</label></td>
+                                  <td><label class="form-control">{{ voucher.amount }}</label></td>
+                                </tr>
+                                {% endfor %}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  {#<div class="row clearfix">#}
+                  {#  <div class="col-md-12">#}
+                  {#    <button id="add_row" class="btn btn-default pull-left">Add Row</button>#}
+                  {#    <button id='delete_row' class="pull-right btn btn-default">Delete Row</button>#}
+                  {#  </div>#}
+                  {#</div>#}
+                  
+                  <div class="row clearfix" style="margin-top:20px">
+                      
+    <div id="content" class="col-sm-6">
+      <h1>Your order has been placed!</h1>
+      <p>Your order has been successfully processed!</p><p>You can view your order history by going to the 
+      <b><a href="{{ myaccount }}">my account</a></b> 
+      page and by clicking on 
+      <b><a href="{{ myorders }}">history</a></b>.
+      </p>
+      <p>If your purchase has an associated download, you can go to the account 
+      <b><a href="{{ mydownloads }}">downloads</a></b>
+      page to view them.
+      </p>
+      <p>Please direct any questions you have to the 
+      <b><a href="{{ contactinformation }}">store owner</a></b>.
+      </p>
+      <p>Thanks for shopping with us online!
+      </p>
+      <div class="buttons">
+        <div class="pull-right">
+            <b><a href="{{ commonhome }}" class="btn btn-primary">Continue</a></b>
+            </div>
+      </div>
+    </div>
+                    <div class="pull-right col-md-4">
+                      <table class="table table-bordered table-hover" id="tab_logic_total">
+                        <tbody>
+                            
+                            {% for total in totals %}
+                            <tr>
+                              <td colspan="4" class="text-left"><label>{{ total.title }}:</label></td>
+                              <td class="text-center"><label class="form-control">{{ total.text }}</label></td>
+                            </tr>
+                            {% endfor %} 
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+            
+                Invoice was created on a computer and is valid without the signature and seal.
+            
+        </div>
+        <!--<div class="toolbar hidden-print">
+        <div class="text-right">
+            <button id="printInvoice" class="btn btn-info"  onclick="printDiv('invoicediv')"><i class="fa fa-print"></i> Print</button>
+        </div>
+        <hr>
+    </div>-->
+        <!--DO NOT DELETE THIS div. IT is responsible for showing footer always at the bottom-->
+        <div></div>
+    </div>
+    <script>
+        
+        function printDiv(divName) {
+     var printContents = document.getElementById(divName).innerHTML;
+     var originalContents = document.body.innerHTML;
+
+     document.body.innerHTML = printContents;
+
+     window.print();
+
+     document.body.innerHTML = originalContents;
+}
+        
+    </script>
+</div>
+
+{{ footer }}
